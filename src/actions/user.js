@@ -1,9 +1,9 @@
 import { USER_DATA } from '.';
 
-const userData = ({ email, password }) => ({
+const userData = ({ email, pass }) => ({
   type: USER_DATA,
   email,
-  password,
+  pass,
 });
 
 export default userData;
