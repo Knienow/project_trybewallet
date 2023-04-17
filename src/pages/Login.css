@@ -20,16 +20,12 @@ h2 {
   border-radius: 20px;
   color: #0000;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin: auto;
   margin-top: 10%;
   text-align: center;
   width: 400px;
   align-items: center;
-}
-
-label {
-  
 }
 
 input {
@@ -38,7 +34,6 @@ input {
   margin-bottom: 5px;
   text-align: center;
   font-size: 15px;
-  padding: 5px;
   border-radius: 10px;
   border-color: rgb(145, 246, 145);
 }
