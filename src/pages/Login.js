@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { USER_DATA } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -55,10 +56,9 @@ class Login extends React.Component {
     const { email, password, disabled } = this.state;
     return (
       <div>
-        <form>
-          <header>
-            <h1>Login</h1>
-          </header>
+        <form className="form">
+          <h1>TrybeWallet</h1>
+          {/* <h2>Login</h2> */}
           <label htmlFor="email">
             E-mail:
             <input
