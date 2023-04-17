@@ -1,22 +1,23 @@
-body{
+body {
   background-color: rgb(28, 144, 28);
 }
 
 h1 {
   color: rgb(8, 46, 5);
-  margin-top: 30px;
+  cursor: default;
   font-size: 50px;
-  cursor:default;
+  margin-top: 30px;
 }
 
 h2 {
   color: rgb(36, 47, 35);
-  margin-top: 30px;
+  cursor: default;
   font-size: 25px;
-  cursor:default;
+  margin-top: 30px;
 }
 
 .form {
+  align-items: center;
   border-radius: 20px;
   color: #0000;
   flex-direction: column;
@@ -25,29 +26,28 @@ h2 {
   margin-top: 10%;
   text-align: center;
   width: 400px;
-  align-items: center;
 }
 
 input {
+  border-color: rgb(145, 246, 145);
+  border-radius: 10px;
+  font-size: 15px;
   height: 50px;
-  width: 300px;
   margin-bottom: 5px;
   text-align: center;
-  font-size: 15px;
-  border-radius: 10px;
-  border-color: rgb(145, 246, 145);
+  width: 300px;
 }
 
 button {
-  height: 40px;
-  width: 200px;
-  font-size: 15px;
-  border-radius: 10px;
-  font-weight: bold;
-  color: rgb(8, 46, 5);
-  margin-top: 20px;
-  margin-bottom: 40px;
-  border-color: rgb(145, 246, 145);
   background-color: rgb(221, 238, 221);
+  border-color: rgb(145, 246, 145);
+  border-radius: 10px;
+  color: rgb(8, 46, 5);
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  height: 40px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  width: 200px;
 }
