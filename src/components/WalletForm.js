@@ -6,11 +6,13 @@ import { fetchAṔI } from '../actions';
 
 class WalletForm extends React.Component {
   state = {
+    // id: -1,
     value: '',
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
     tag: 'Alimentação',
+    // quotes: {},
     // currencies: [],
   };
 
@@ -26,7 +28,23 @@ class WalletForm extends React.Component {
     });
   };
 
-  // handleClick
+  // handleClick = async () => {
+  //   const coinsObject = await quotationAPI();
+  //   this.setState((prevState) => ({
+  //     id: prevState.id + 1,
+  //     quotes: coinsObject,
+  //   }), () => {
+  //     const { dispatch } = this.props;
+  //     dispatch(updateTotalExpenses(this.state));
+  //     this.setState({
+  //       value: '',
+  //       description: '',
+  //       currency: 'USD',
+  //       method: 'Dinheiro',
+  //       tag: 'Alimentação',
+  //     });
+  //   });
+  // };
 
   render() {
     const { currencies } = this.props;
@@ -68,10 +86,10 @@ class WalletForm extends React.Component {
               {/* Os valores da chave currencies no estado global devem ser puxados através de uma requisição à API no endpoint https://economia.awesomeapi.com.br/json/all;
 Remova, das informações trazidas pela API, a opção 'USDT';
 A chave currencies do estado global deve ser um array. */}
-              { currencies.map((coin) => (
+              { currencies.map((coin, index) => (
                 <option
-                  key={ coin }
-                  value={ coin }
+                  key={ `${coin.name}-${index}` }
+                  // value={ coin }
                 >
                   { coin }
                 </option>
@@ -114,7 +132,7 @@ A chave currencies do estado global deve ser um array. */}
           </label>
           <button
             type="button"
-            // onClick={}
+            // onClick={ this.handleClick }
           >
             Adicionar despesa
           </button>
@@ -128,6 +146,10 @@ const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
 });
 
+// const mapDispatchToProps = (dispatch) => ({
+//   currencies: (state) => dispatch(quotationAPI(state)),
+// });
+
 WalletForm.propTypes = {
   value: PropTypes.string,
   description: PropTypes.string,
@@ -138,4 +160,5 @@ WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string),
 }.isRequired;
 
+// export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);
 export default connect(mapStateToProps)(WalletForm);
