@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { USER_DATA } from '../actions';
+import { USER_DATA } from '../redux/actions';
 import './Login.css';
 
 class Login extends React.Component {
@@ -101,6 +101,7 @@ Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
+  dispatch: PropTypes.func,
 }.isRequired;
 
 // export default connect(null, mapDispatchToProps)(Login);

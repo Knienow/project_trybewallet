@@ -19,7 +19,7 @@ class Header extends React.Component {
             data-testid="total-field"
           >
             { expenses.reduce((acc, curr) => (
-              acc + (Number(curr.value) * Number(curr.quotes[curr.currency].ask))
+              acc + (Number(curr.value) * Number(curr.exchangeRates[curr.currency].ask))
             ), 0).toFixed(2) }
           </span>
           <span data-testid="header-currency-field">BRL</span>
@@ -42,6 +42,7 @@ const mapStateToProps = ({ user: { email },
 Header.propTypes = {
   email: PropTypes.string,
   expenses: PropTypes.arrayOf(PropTypes.shape({})),
+  // expenses: PropTypes.number,
 }.isRequired;
 
 export default connect(mapStateToProps)(Header);

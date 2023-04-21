@@ -2,23 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './WalletForm.css';
-import { fetchAṔI } from '../actions';
+import { fetchCurrency, quotationAPI, updateWallet } from '../redux/actions';
 
 class WalletForm extends React.Component {
   state = {
-    // id: -1,
+    id: -1,
     value: '',
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
     tag: 'Alimentação',
-    // quotes: {},
+    exchangeRates: {},
     // currencies: [],
   };
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchAṔI());
+    dispatch(fetchCurrency());
   }
 
   handleInput = ({ target }) => {
@@ -28,23 +28,30 @@ class WalletForm extends React.Component {
     });
   };
 
-  // handleClick = async () => {
-  //   const coinsObject = await quotationAPI();
-  //   this.setState((prevState) => ({
-  //     id: prevState.id + 1,
-  //     quotes: coinsObject,
-  //   }), () => {
-  //     const { dispatch } = this.props;
-  //     dispatch(updateTotalExpenses(this.state));
-  //     this.setState({
-  //       value: '',
-  //       description: '',
-  //       currency: 'USD',
-  //       method: 'Dinheiro',
-  //       tag: 'Alimentação',
-  //     });
-  //   });
-  // };
+  // Ao clicar no botão "Adicionar despesa"
+  // 1- é feita uma requisição a API
+  // 2- é salva uma nova despesa na chave expenses do estado global
+  // 3- o valor total do elemento com o data-testid="total-field" é atualizado.
+  // 4- cada despesa possui um id sequencial.
+  // 5- os inputs de valor e descrição voltam ao valor inicial, contendo o valor ""
+  // 6- é exibido o total das despesas com 2 casas decimais no elemento com o data-testid="total-field", levando em consideração a cotação localizada na chave ask.
+  handleClick = async () => {
+    const coinsObject = await quotationAPI();
+    this.setState((prevState) => ({
+      id: prevState.id + 1,
+      exchangeRates: coinsObject,
+    }), () => {
+      const { dispatch } = this.props;
+      dispatch(updateWallet(this.state));
+      this.setState({
+        value: '',
+        description: '',
+        currency: 'USD',
+        method: 'Dinheiro',
+        tag: 'Alimentação',
+      });
+    });
+  };
 
   render() {
     const { currencies } = this.props;
@@ -132,7 +139,7 @@ A chave currencies do estado global deve ser um array. */}
           </label>
           <button
             type="button"
-            // onClick={ this.handleClick }
+            onClick={ this.handleClick }
           >
             Adicionar despesa
           </button>
@@ -142,20 +149,22 @@ A chave currencies do estado global deve ser um array. */}
   }
 }
 
-const mapStateToProps = (state) => ({
-  currencies: state.wallet.currencies,
-});
+const mapStateToProps = ({ wallet }) => wallet;
+
+// const mapStateToProps = (state) => ({
+//   currencies: state.wallet.currencies,
+// });
 
 // const mapDispatchToProps = (dispatch) => ({
 //   currencies: (state) => dispatch(quotationAPI(state)),
 // });
 
 WalletForm.propTypes = {
-  value: PropTypes.string,
-  description: PropTypes.string,
-  currency: PropTypes.string,
-  method: PropTypes.string,
-  tag: PropTypes.string,
+  // value: PropTypes.string,
+  // description: PropTypes.string,
+  // currency: PropTypes.string,
+  // method: PropTypes.string,
+  // tag: PropTypes.string,
   dispatch: PropTypes.func,
   currencies: PropTypes.arrayOf(PropTypes.string),
 }.isRequired;
