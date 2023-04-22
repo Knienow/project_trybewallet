@@ -7,7 +7,7 @@ class Header extends React.Component {
     const { email, expenses } = this.props;
     return (
       <header>
-        <h1>Trybewallet</h1>
+        <h1>TrybeWallet</h1>
         <p>
           Usuário:
           {' '}
