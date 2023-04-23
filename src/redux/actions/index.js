@@ -1,6 +1,7 @@
 export const USER_DATA = 'USER_DATA';
 export const UPDATE_CURRENCY = 'UPDATE_CURRENCY';
 export const UPDATE_WALLET = 'UPDATE_WALLET';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const userData = ({ email, pass }) => ({
   type: USER_DATA,
@@ -16,6 +17,11 @@ export const updateCurrency = (payload) => ({
 export const updateWallet = (payload) => ({
   type: UPDATE_WALLET,
   payload,
+});
+
+export const deleteExpense = (expenseId) => ({
+  type: DELETE_EXPENSE,
+  id: expenseId,
 });
 
 export const fetchCurrency = () => async (dispatch) => {
