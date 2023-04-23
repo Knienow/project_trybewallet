@@ -1,4 +1,4 @@
-const mockData = {
+export const mockData = {
   USD: {
     code: 'USD',
     codein: 'BRL',
@@ -209,4 +209,50 @@ const mockData = {
   },
 };
 
-export default mockData;
+export const testTableData = {
+  user: {
+    email: 'test@test.com',
+  },
+  wallet: {
+    isFetching: false,
+    editor: false,
+    idToEdit: 0,
+    currencyToExchange: 'BRL',
+    currencies: [
+      'USD',
+      'CAD',
+      'EUR',
+      'GBP',
+      'ARS',
+      'BTC',
+      'LTC',
+      'JPY',
+      'CHF',
+      'AUD',
+      'CNY',
+      'ILS',
+      'ETH',
+      'XRP',
+    ],
+    expenses: [
+      {
+        id: 0,
+        value: '20',
+        currency: 'USD',
+        method: 'Dinheiro',
+        tag: 'Alimentação',
+        description: 'vinte dólares',
+        exchangeRates: mockData,
+      },
+      {
+        id: 1,
+        value: '15',
+        currency: 'EUR',
+        method: 'Cartão de crédito',
+        tag: 'Lazer',
+        description: 'quinze euros',
+        exchangeRates: mockData,
+      },
+    ],
+  },
+};
